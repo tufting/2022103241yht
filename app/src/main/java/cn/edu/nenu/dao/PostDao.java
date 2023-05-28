@@ -18,7 +18,7 @@ public interface PostDao {
     @Delete
     void delete(Post post);
 
-    @Query("SELECT * FROM Post")
+    @Query("SELECT * FROM Post ORDER BY time DESC")
     List<Post> queryAll();
 
     @Query("SELECT * FROM Post WHERE title = :title ORDER BY time DESC")

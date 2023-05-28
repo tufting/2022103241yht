@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         et_pwd = findViewById(R.id.et_pwd);
         btn_login = findViewById(R.id.btn_login);
 
-//        添加监听
+        /* 添加监听 */
         et_account.addTextChangedListener(textWatcher);
         et_pwd.addTextChangedListener(textWatcher);
 
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String account = et_account.getText().toString();
         String pwd = et_pwd.getText().toString();
 
-//        点击登录按钮
+        /* 点击登录按钮 */
         if(view.getId() == R.id.btn_login) {
             User user = userDao.queryByAcc_Pwd(account, pwd);
 
@@ -53,11 +53,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Log.d("execute log", String.valueOf(user));
                 ToastUtil.show(this, "登录成功");
 
-//                保存当前用户信息
+                /* 保存当前用户信息 */
                 SessionUtil sUtil = new SessionUtil();
                 sUtil.SessionSetUser(user);
 
-//                跳转到资讯主页
+                /* 跳转到资讯主页 */
                 Intent intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
             } else {
@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-//    监听方法
+    /* 监听方法 */
     TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
