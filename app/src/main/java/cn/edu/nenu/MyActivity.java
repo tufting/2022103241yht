@@ -54,6 +54,10 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
                 break;
             case R.id.tv_myPost:
             case R.id.iv_myPost:
+                intent = new Intent(this, MyPostActivity.class);
+                startActivity(intent);
+
+                ToastUtil.show(this, "我的帖子");
                 break;
             case R.id.tv_addPost:
             case R.id.iv_addPost:
