@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.2022103241yht">
         <activity
+            android:name=".MyPostActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddPostActivity"
             android:exported="false" />
         <activity

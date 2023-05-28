@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             User user = userDao.queryByAcc_Pwd(account, pwd);
 
             if (user != null) {
-                Log.d("cn.edu.nenu", String.valueOf(user));
+                Log.d("execute log", String.valueOf(user));
                 ToastUtil.show(this, "登录成功");
 
 //                保存当前用户信息

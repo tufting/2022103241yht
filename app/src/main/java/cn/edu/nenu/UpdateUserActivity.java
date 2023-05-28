@@ -33,7 +33,7 @@ public class UpdateUserActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_user);
-        Log.d("cn.edu.nenu", "UpdateUserActivity类：onCreate()被执行。");
+        Log.d("execute log", "UpdateUserActivity类：onCreate()被执行。");
 
 //        1、通过Application获取用户信息
         myApp = MyApplication.getInstance();
@@ -45,7 +45,7 @@ public class UpdateUserActivity extends AppCompatActivity implements View.OnClic
         user.setRegTime(myApp.infoMap.get("cur_regTime"));
         user.setSignature(myApp.infoMap.get("cur_signature"));
 
-        Log.d("cn.edu.nenu", user.toString());
+        Log.d("execute log", user.toString());
 
 //        2、获取et的id
         tv_account = findViewById(R.id.tv_account);
@@ -73,16 +73,13 @@ public class UpdateUserActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        String pwd = et_password.getText().toString();
-        String name = et_name.getText().toString();
-        String signature = et_signature.getText().toString();
         Intent intent;
 
         if(view.getId() == R.id.btn_update) {
 //            5、将修改后的信息提交到数据库
-            user.setPassword(pwd);
-            user.setName(name);
-            user.setSignature(signature);
+            user.setPassword(et_password.getText().toString());
+            user.setName(et_name.getText().toString());
+            user.setSignature(et_signature.getText().toString());
 
             int flag = userDao.update(user);
 

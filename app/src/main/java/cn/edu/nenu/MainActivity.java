@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_login).setOnClickListener(this);
         findViewById(R.id.btn_register).setOnClickListener(this);
 
-        Log.d("cn.edu.nenu", "MainActivity onCreate");
+        Log.d("execute log", "MainActivity onCreate");
     }
 
     @Override

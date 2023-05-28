@@ -67,13 +67,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
             userDao.insert(user);
 
-//            注册成功
             ToastUtil.show(this, "注册成功");
 
 //            打印所有用户信息
             List<User> list = userDao.queryAll();
             for (User u: list) {
-                Log.d("cn.edu.nenu", u.toString());
+                Log.d("execute log", u.toString());
             }
 
 //            跳转到登陆页面

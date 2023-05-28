@@ -7,17 +7,17 @@
     <string name="account_hint">请输入用户名</string>
     <string name="password_hint">请输入密码</string>
 
-<!--    title-->
+    <!--    title-->
     <string name="myInfo_hint">我的信息</string>
     <string name="myPost_hint">我的帖子</string>
     <string name="addPost_hint">发布新帖</string>
 
-<!--    update user info-->
+    <!--    update user info-->
     <string name="confirm_update">确认修改</string>
     <string name="regTime_hint">2023-05-27 12:00:00</string>
     <string name="signature_hint">说点什么吧</string>
 
-<!--    add post-->
+    <!--    add post-->
     <string name="title_hint">请输入主题</string>
     <string name="content_hint">请输入帖子内容</string>
     <string name="confirm_add">确认发布</string>

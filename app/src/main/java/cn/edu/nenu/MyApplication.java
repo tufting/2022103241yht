@@ -29,7 +29,7 @@ public class MyApplication extends Application {
         super.onCreate();
         myApp = this;
 
-        Log.d("cn.edu.nenu", "MyApplication onCreate");
+        Log.d("execute log", "MyApplication onCreate");
 
         campusInfoDB = Room.databaseBuilder(this, CampusInfoDatabase.class, "campus_info")
                 .addMigrations().allowMainThreadQueries().build();
@@ -39,14 +39,14 @@ public class MyApplication extends Application {
     @Override
     public void onTerminate() {
         super.onTerminate();
-        Log.d("cn.edu.nenu", "onTerminate");
+        Log.d("execute log", "onTerminate");
     }
 
 //    App配置改变时调用
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        Log.d("cn.edu.nenu", "onConfigurationChanged");
+        Log.d("execute log", "onConfigurationChanged");
     }
 
 //    获取数据库实例
