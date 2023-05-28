@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">校园资讯</string>
+
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+
+    <string name="account_hint">请输入用户名</string>
+    <string name="password_hint">请输入密码</string>
+
+<!--    title-->
+    <string name="myInfo_hint">我的信息</string>
+    <string name="myPost_hint">我的帖子</string>
+    <string name="addPost_hint">发布新帖</string>
+
+<!--    update user info-->
+    <string name="confirm_update">确认修改</string>
+    <string name="regTime_hint">2023-05-27 12:00:00</string>
+    <string name="signature_hint">说点什么吧</string>
+
+<!--    add post-->
+    <string name="title_hint">请输入主题</string>
+    <string name="content_hint">请输入帖子内容</string>
+    <string name="confirm_add">确认发布</string>
+
+    <string name="block1">瓜田趣事</string>
+    <string name="block2">二手闲置</string>
+    <string name="block3">打听求助</string>
+    <string name="block4">恋爱交友</string>
+</resources>
