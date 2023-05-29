@@ -62,7 +62,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         postDao = myApp.getCampusInfoDB().postDao();
         String content = myApp.infoMap.get("search_content");
         Log.d("execute log", "HomeActivity中search_content为：" + content);
-        postList = postDao.queryByContent("%" + content + "%");
+        if (content != null) {
+            postList = postDao.queryByContent("%" + content + "%");
+        } else {
+            postList = postDao.queryAll();
+        }
+
         et_search.setText(content);
         myApp.infoMap.put("search_content", null);
 
@@ -78,7 +83,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (view.getId()) {
             case R.id.iv_home:
-                myApp.infoMap.put("search_content", null);
                 intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
                 break;
@@ -100,6 +104,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        ToastUtil.show(this, "您选择的是：" + postList.get(i));
+        ToastUtil.show(this, "您选择的帖子主题是：" + postList.get(i).getTitle());
     }
 }

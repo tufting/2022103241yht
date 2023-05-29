@@ -11,6 +11,10 @@
     <string name="myInfo_hint">我的信息</string>
     <string name="myPost_hint">我的帖子</string>
     <string name="addPost_hint">发布新帖</string>
+    <string name="myOne_hint">当前帖子</string>
+
+    <!--    myOne_hint-->
+    <string name="delete_post">删除帖子</string>
 
     <!--    update user info-->
     <string name="confirm_update">确认修改</string>

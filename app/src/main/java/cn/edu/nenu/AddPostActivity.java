@@ -20,7 +20,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
 
     private EditText et_title;
     private EditText et_content;
-    private String block;
+    private String block = "瓜田趣事";
 
     private MyApplication myApp;
     private PostDao postDao;
@@ -35,7 +35,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         et_title = findViewById(R.id.et_title);
         et_content = findViewById(R.id.et_content);
 
-//        找到用户选择的block
+        /* 找到用户选择的block */
         RadioGroup rb_block = findViewById(R.id.rg_block);
         rb_block.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

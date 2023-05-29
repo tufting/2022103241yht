@@ -57,6 +57,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 SessionUtil sUtil = new SessionUtil();
                 sUtil.SessionSetUser(user);
 
+                /* 获取当前用户收藏过哪些帖子 */
+
+
                 /* 跳转到资讯主页 */
                 Intent intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
