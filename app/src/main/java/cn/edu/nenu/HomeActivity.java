@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.HashMap;
@@ -29,6 +32,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private List<Post> postList;
     private ListView lv_post;
 
+    private EditText et_search;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +43,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.iv_home).setOnClickListener(this);
         findViewById(R.id.iv_collect).setOnClickListener(this);
         findViewById(R.id.iv_my).setOnClickListener(this);
+
+        /* 监听搜索框，设置模糊查询 */
+        et_search = findViewById(R.id.et_search);
+        findViewById(R.id.iv_search).setOnClickListener(this);
 
         myApp = MyApplication.getInstance();
 
@@ -51,7 +60,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         /* 获取Post信息 */
         postDao = myApp.getCampusInfoDB().postDao();
-        postList = postDao.queryAll();
+        String content = myApp.infoMap.get("search_content");
+        Log.d("execute log", "HomeActivity中search_content为：" + content);
+        postList = postDao.queryByContent("%" + content + "%");
+        et_search.setText(content);
+        myApp.infoMap.put("search_content", null);
 
         HomeBaseAdapter adapter = new HomeBaseAdapter(this, postList, userMap);
 
@@ -65,6 +78,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (view.getId()) {
             case R.id.iv_home:
+                myApp.infoMap.put("search_content", null);
+                intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
                 break;
             case R.id.iv_collect:
                 intent = new Intent(this, RegisterActivity.class);
@@ -72,6 +88,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.iv_my:
                 intent = new Intent(this, MyActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.iv_search:
+                myApp.infoMap.put("search_content", et_search.getText().toString());
+                intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
                 break;
         }

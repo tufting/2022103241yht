@@ -28,6 +28,7 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
         tv_name.setText(myApp.infoMap.get("cur_name"));
         tv_signature.setText(myApp.infoMap.get("cur_signature"));
 
+        /* 页面中功能的监听 */
         findViewById(R.id.tv_update).setOnClickListener(this);
         findViewById(R.id.iv_update).setOnClickListener(this);
 
@@ -39,6 +40,10 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
 
         findViewById(R.id.tv_logout).setOnClickListener(this);
         findViewById(R.id.iv_logout).setOnClickListener(this);
+
+        /* 底部菜单栏的监听 */
+        findViewById(R.id.iv_home).setOnClickListener(this);
+        findViewById(R.id.iv_collect).setOnClickListener(this);
     }
 
     @Override
@@ -72,6 +77,14 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
                 startActivity(intent);
 
                 ToastUtil.show(this, "已退出");
+                break;
+            case R.id.iv_home:
+                intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.iv_collect:
+//                intent = new Intent(this, CollectActivity.class);
+//                startActivity(intent);
                 break;
         }
     }

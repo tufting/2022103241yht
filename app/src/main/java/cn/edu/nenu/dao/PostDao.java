@@ -21,9 +21,9 @@ public interface PostDao {
     @Query("SELECT * FROM Post ORDER BY time DESC")
     List<Post> queryAll();
 
-    @Query("SELECT * FROM Post WHERE title = :title ORDER BY time DESC")
-    List<Post> queryByTitle(String title);
-
     @Query("SELECT * FROM Post WHERE author = :author ORDER BY time DESC")
     List<Post> queryByAuthor(String author);
+
+    @Query("SELECT * FROM Post WHERE title like :content or content like :content ORDER BY time DESC")
+    List<Post> queryByContent(String content);
 }
