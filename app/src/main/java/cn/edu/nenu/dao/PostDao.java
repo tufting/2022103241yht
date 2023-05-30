@@ -22,6 +22,9 @@ public interface PostDao {
     @Update
     int update(Post post);
 
+    @Query("UPDATE Post SET collects_num = collects_num + 1 WHERE id = :id")
+    int collectAddOne(int id);
+
     @Query("SELECT * FROM Post ORDER BY time DESC")
     List<Post> queryAll();
 

@@ -29,7 +29,7 @@ public class MyApplication extends Application {
         super.onCreate();
         myApp = this;
 
-        Log.d("execute log", "MyApplication onCreate");
+        Log.d("execute log", "执行了MyApplication类的onCreate()方法...");
 
         campusInfoDB = Room.databaseBuilder(this, CampusInfoDatabase.class, "campus_info")
                 .addMigrations().allowMainThreadQueries().build();
@@ -39,14 +39,14 @@ public class MyApplication extends Application {
     @Override
     public void onTerminate() {
         super.onTerminate();
-        Log.d("execute log", "onTerminate");
+        Log.d("execute log", "执行了MyApplication类的onTerminate()方法...");
     }
 
 //    App配置改变时调用
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        Log.d("execute log", "onConfigurationChanged");
+        Log.d("execute log", "执行了MyApplication类的onConfigurationChanged()方法...");
     }
 
 //    获取数据库实例

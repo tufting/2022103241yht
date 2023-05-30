@@ -1,12 +1,14 @@
 package cn.edu.nenu.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -18,11 +20,13 @@ public class HomeBaseAdapter extends BaseAdapter {
     private Context context;
     private List<Post> postList;
     private Map<Integer, String> userMap;
+    private Collection<Integer> collection;
 
-    public HomeBaseAdapter(Context context, List<Post> postList, Map<Integer, String> userMap) {
+    public HomeBaseAdapter(Context context, List<Post> postList, Map<Integer, String> userMap, Collection<Integer> collection) {
         this.context = context;
         this.postList = postList;
         this.userMap = userMap;
+        this.collection = collection;
     }
 
     @Override
@@ -63,7 +67,14 @@ public class HomeBaseAdapter extends BaseAdapter {
         holder.tv_content.setText(post.getTitle() + " ||| " + post.getContent());
         holder.tv_block.setText("#" + post.getBlock() + "#");
         holder.tv_time.setText(post.getTime());
-        holder.tv_collects_num.setText("收藏数：" + String.valueOf(post.getCollects_num()) + " (点击收藏)");
+
+        String collect_text;
+        if (collection.contains(post.getId())) {
+            collect_text = "收藏数：" + String.valueOf(post.getCollects_num()) + " (已收藏)";
+        } else {
+            collect_text = "收藏数：" + String.valueOf(post.getCollects_num()) + " (点击收藏)";
+        }
+        holder.tv_collects_num.setText(collect_text);
 
         return convertView;
     }

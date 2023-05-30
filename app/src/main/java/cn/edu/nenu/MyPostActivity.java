@@ -30,7 +30,7 @@ public class MyPostActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_post);
-        Log.d("execute log", "MyPostActivity类onCreate()被执行。");
+        Log.d("execute log", "执行了MyPostActivity类的onCreate()方法...");
 
         myApp = MyApplication.getInstance();
         postDao = myApp.getCampusInfoDB().postDao();

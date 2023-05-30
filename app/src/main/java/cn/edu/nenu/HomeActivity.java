@@ -1,6 +1,7 @@
 package cn.edu.nenu;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Transaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,13 +13,17 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import cn.edu.nenu.adapter.HomeBaseAdapter;
+import cn.edu.nenu.dao.CollectsDao;
 import cn.edu.nenu.dao.PostDao;
 import cn.edu.nenu.dao.UserDao;
+import cn.edu.nenu.entity.Collects;
 import cn.edu.nenu.entity.Post;
 import cn.edu.nenu.entity.User;
 import cn.edu.nenu.util.ToastUtil;
@@ -28,17 +33,20 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private MyApplication myApp;
     private PostDao postDao;
     private UserDao userDao;
+    private CollectsDao collectsDao;
 
     private List<Post> postList;
     private ListView lv_post;
 
     private EditText et_search;
 
+    private int curId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Log.d("execute log", "HomeActivity类onCreate()被执行。");
+        Log.d("execute log", "执行了HomeActivity类的onCreate()方法...");
 
         findViewById(R.id.iv_home).setOnClickListener(this);
         findViewById(R.id.iv_collect).setOnClickListener(this);
@@ -58,10 +66,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             userMap.put(user.getId(), user.getName());
         }
 
+        /* 获取Collect信息，添加到collection列表中 */
+        Collection<Integer> collection = new ArrayList<>();
+        collectsDao = myApp.getCampusInfoDB().collectsDao();
+        curId = Integer.parseInt(myApp.infoMap.get("cur_id"));
+        List<Integer> list = collectsDao.queryByUserId(curId);
+        for (int postId: list) {
+            collection.add(postId);
+        }
+
         /* 获取Post信息 */
         postDao = myApp.getCampusInfoDB().postDao();
         String content = myApp.infoMap.get("search_content");
-        Log.d("execute log", "HomeActivity中search_content为：" + content);
+        Log.d("execute log", "HomeActivity页面的搜索框内容(search_content)为" + content);
         if (content != null) {
             postList = postDao.queryByContent("%" + content + "%");
         } else {
@@ -71,7 +88,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         et_search.setText(content);
         myApp.infoMap.put("search_content", null);
 
-        HomeBaseAdapter adapter = new HomeBaseAdapter(this, postList, userMap);
+        Log.d("execute log", "当前用户收藏过 = " + collection);
+
+        HomeBaseAdapter adapter = new HomeBaseAdapter(this, postList, userMap, collection);
 
         lv_post = findViewById(R.id.lv_post);
         lv_post.setAdapter(adapter);
@@ -87,7 +106,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.iv_collect:
-                intent = new Intent(this, RegisterActivity.class);
+                intent = new Intent(this, CollectActivity.class);
                 startActivity(intent);
                 break;
             case R.id.iv_my:
@@ -104,6 +123,22 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        ToastUtil.show(this, "您选择的帖子主题是：" + postList.get(i).getTitle());
+        int postId = postList.get(i).getId();
+
+        /* 这里写收藏功能，先看是否已经收藏了 */
+        int findExist = collectsDao.queryByDoubleId(curId, postId);
+        if (findExist == 0) {
+            Collects collects = new Collects();
+            collects.setUserId(curId);
+            collects.setPostId(postId);
+
+            /* 优化：这里需要添加事务管理 */
+            collectsDao.insert(collects);
+            postDao.collectAddOne(postId);
+
+            ToastUtil.show(this, "收藏成功" + postList.get(i).getTitle());
+        } else {
+            ToastUtil.show(this, "您已经收藏过了" + postList.get(i).getTitle());
+        }
     }
 }

@@ -33,7 +33,7 @@ public class UpdateUserActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_user);
-        Log.d("execute log", "UpdateUserActivity类：onCreate()被执行。");
+        Log.d("execute log", "执行了UpdateUserActivity类的onCreate()方法...");
 
 //        1、通过Application获取用户信息
         myApp = MyApplication.getInstance();
@@ -45,7 +45,7 @@ public class UpdateUserActivity extends AppCompatActivity implements View.OnClic
         user.setRegTime(myApp.infoMap.get("cur_regTime"));
         user.setSignature(myApp.infoMap.get("cur_signature"));
 
-        Log.d("execute log", user.toString());
+        Log.d("execute log", "当前用户信息：" + user.toString());
 
 //        2、获取et的id
         tv_account = findViewById(R.id.tv_account);

@@ -30,7 +30,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_post);
 
-        Log.d("execute log", "AddPostActivity类onCreate()被执行。");
+        Log.d("execute log", "执行了AddPostActivity类的onCreate()方法...");
 
         et_title = findViewById(R.id.et_title);
         et_content = findViewById(R.id.et_content);

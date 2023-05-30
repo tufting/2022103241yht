@@ -36,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        Log.d("execute log", "执行了RegisterActivity类的onCreate()方法...");
 
         et_account = findViewById(R.id.et_account);
         et_pwd = findViewById(R.id.et_pwd);

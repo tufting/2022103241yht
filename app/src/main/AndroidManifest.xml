@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.2022103241yht">
         <activity
+            android:name=".CollectActivity"
+            android:exported="false" />
+        <activity
             android:name=".MyOneActivity"
             android:exported="false" />
         <activity

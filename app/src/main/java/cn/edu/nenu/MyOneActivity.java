@@ -32,7 +32,7 @@ public class MyOneActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_one);
-        Log.d("execute log", "MyOneActivity类onCreate()被执行。");
+        Log.d("execute log", "执行了MyOneActivity类的onCreate()方法...");
 
         /* 获取post数据 */
         myApp = MyApplication.getInstance();
