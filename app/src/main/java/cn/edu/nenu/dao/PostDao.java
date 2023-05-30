@@ -33,4 +33,7 @@ public interface PostDao {
 
     @Query("SELECT * FROM Post WHERE title like :content or content like :content ORDER BY time DESC")
     List<Post> queryByContent(String content);
+
+    @Query("SELECT * FROM Post WHERE id in (SELECT postId FROM Collects WHERE userId = :userId)")
+    List<Post> queryByCollectUserId(int userId);
 }

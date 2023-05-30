@@ -33,6 +33,8 @@ public class MyApplication extends Application {
 
         campusInfoDB = Room.databaseBuilder(this, CampusInfoDatabase.class, "campus_info")
                 .addMigrations().allowMainThreadQueries().build();
+
+
     }
 
 //    App终止时调用

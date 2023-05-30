@@ -12,6 +12,7 @@
     <string name="myPost_hint">我的帖子</string>
     <string name="addPost_hint">发布新帖</string>
     <string name="myOne_hint">当前帖子</string>
+    <string name="myCollect">我的收藏</string>
 
     <!--    myOne_hint-->
     <string name="delete_post">删除帖子</string>

@@ -132,13 +132,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             collects.setUserId(curId);
             collects.setPostId(postId);
 
-            /* 优化：这里需要添加事务管理 */
+            /* 待优化：这里需要添加事务管理 */
             collectsDao.insert(collects);
             postDao.collectAddOne(postId);
 
-            ToastUtil.show(this, "收藏成功" + postList.get(i).getTitle());
+            /* 待优化：收藏成功后，应在显示页面将收藏数文本更新 */
+
+            ToastUtil.show(this, "收藏成功");
         } else {
-            ToastUtil.show(this, "您已经收藏过了" + postList.get(i).getTitle());
+            ToastUtil.show(this, "您已经收藏了");
         }
     }
 }
