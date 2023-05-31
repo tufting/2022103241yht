@@ -60,7 +60,7 @@ public class MyPostBaseAdapter extends BaseAdapter {
         holder.tv_content.setText(post.getContent());
         holder.tv_block.setText("#" + post.getBlock() + "#");
         holder.tv_time.setText(post.getTime());
-        holder.tv_collects_num.setText("收藏数：" + String.valueOf(post.getCollects_num()));
+        holder.tv_collects_num.setText(String.valueOf(post.getCollects_num()) + "人收藏");
 
         return convertView;
     }

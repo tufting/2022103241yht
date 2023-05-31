@@ -14,8 +14,11 @@ public interface CollectsDao {
     @Insert
     void insert(Collects... collects);
 
-    @Delete
-    void delete(Collects... collects);
+    @Query("DELETE FROM Collects WHERE postId = :postId")
+    void deleteByPostId(int postId);
+
+    @Query("DELETE FROM Collects WHERE userId = :userId and postId = :postId")
+    void removeCollect(int userId, int postId);
 
     @Query("SELECT count(*) FROM Collects WHERE userId = :userId and postId = :postId")
     int queryByDoubleId(int userId, int postId);

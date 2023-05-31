@@ -56,28 +56,22 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
             case R.id.iv_update:
                 intent = new Intent(this, UpdateUserActivity.class);
                 startActivity(intent);
-
-                ToastUtil.show(this, "更改信息");
                 break;
             case R.id.tv_myPost:
             case R.id.iv_myPost:
                 intent = new Intent(this, MyPostActivity.class);
                 startActivity(intent);
-
-                ToastUtil.show(this, "我的帖子");
                 break;
             case R.id.tv_addPost:
             case R.id.iv_addPost:
                 intent = new Intent(this, AddPostActivity.class);
                 startActivity(intent);
-
-                ToastUtil.show(this, "发布新帖");
                 break;
             case R.id.tv_logout:
             case R.id.iv_logout:
+                myApp.infoMap.clear();
                 intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
-
                 ToastUtil.show(this, "已退出");
                 break;
             case R.id.iv_home:
@@ -85,8 +79,8 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
                 startActivity(intent);
                 break;
             case R.id.iv_collect:
-//                intent = new Intent(this, CollectActivity.class);
-//                startActivity(intent);
+                intent = new Intent(this, CollectActivity.class);
+                startActivity(intent);
                 break;
         }
     }

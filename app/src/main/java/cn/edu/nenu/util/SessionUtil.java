@@ -9,7 +9,7 @@ import cn.edu.nenu.entity.User;
 public class SessionUtil {
 
     public void SessionSetUser(User user) {
-        Log.d("execute log", "SessionUtil类：SessionSetUser(User user)被执行。");
+        Log.d("execute log", "执行了SessionUtil类的SessionSetUser(User user)方法...");
         Log.d("execute log", "当前用户信息：" + user.toString());
 
         MyApplication myApp = MyApplication.getInstance();
@@ -23,7 +23,7 @@ public class SessionUtil {
     }
 
     public void SessionSetPost(Post post) {
-        Log.d("execute log", "SessionUtil类：SessionSetPost(Post post)被执行。");
+        Log.d("execute log", "执行了SessionUtil类的SessionSetPost(Post post)方法...");
         Log.d("execute log", "当前帖子信息：" + post.toString());
 
         MyApplication myApp = MyApplication.getInstance();

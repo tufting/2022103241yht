@@ -19,13 +19,11 @@ public class CollectBaseAdapter extends BaseAdapter {
     private Context context;
     private List<Post> postList;
     private Map<Integer, String> userMap;
-    private Collection<Integer> collection;
 
-    public CollectBaseAdapter(Context context, List<Post> postList, Map<Integer, String> userMap, Collection<Integer> collection) {
+    public CollectBaseAdapter(Context context, List<Post> postList, Map<Integer, String> userMap) {
         this.context = context;
         this.postList = postList;
         this.userMap = userMap;
-        this.collection = collection;
     }
 
     @Override
@@ -66,14 +64,7 @@ public class CollectBaseAdapter extends BaseAdapter {
         holder.tv_content.setText(post.getTitle() + " ||| " + post.getContent());
         holder.tv_block.setText("#" + post.getBlock() + "#");
         holder.tv_time.setText(post.getTime());
-
-        String collect_text;
-        if (collection.contains(post.getId())) {
-            collect_text = "收藏数：" + String.valueOf(post.getCollects_num()) + " (点击取消收藏)";
-        } else {
-            collect_text = "收藏数：" + String.valueOf(post.getCollects_num()) + " (点击收藏)";
-        }
-        holder.tv_collects_num.setText(collect_text);
+        holder.tv_collects_num.setText(String.valueOf(post.getCollects_num()) + "人收藏 (点击取消收藏)");
 
         return convertView;
     }

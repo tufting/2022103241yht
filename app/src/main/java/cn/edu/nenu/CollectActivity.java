@@ -2,6 +2,7 @@ package cn.edu.nenu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -54,23 +55,12 @@ public class CollectActivity extends AppCompatActivity implements View.OnClickLi
             userMap.put(user.getId(), user.getName());
         }
 
-        /* 获取Collect信息，添加到collection列表中 */
-        Collection<Integer> collection = new ArrayList<>();
-        collectsDao = myApp.getCampusInfoDB().collectsDao();
-        curId = Integer.parseInt(myApp.infoMap.get("cur_id"));
-        List<Integer> list = collectsDao.queryByUserId(curId);
-        for (int postId: list) {
-            collection.add(postId);
-        }
-
         /* 获取Post信息 */
         postDao = myApp.getCampusInfoDB().postDao();
+        curId = Integer.parseInt(myApp.infoMap.get("cur_id"));
         postList = postDao.queryByCollectUserId(curId);
-        Log.d("execute log", "我收藏的帖子=" + postList);
 
-        Log.d("execute log", "当前用户收藏过 = " + collection);
-
-        CollectBaseAdapter adapter = new CollectBaseAdapter(this, postList, userMap, collection);
+        CollectBaseAdapter adapter = new CollectBaseAdapter(this, postList, userMap);
 
         lv_post = findViewById(R.id.lv_post);
         lv_post.setAdapter(adapter);
@@ -79,7 +69,21 @@ public class CollectActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-
+        Intent intent;
+        switch (view.getId()) {
+            case R.id.iv_home:
+                intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.iv_collect:
+                intent = new Intent(this, CollectActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.iv_my:
+                intent = new Intent(this, MyActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 
     @Override

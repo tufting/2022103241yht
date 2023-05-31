@@ -15,7 +15,7 @@ public class MyApplication extends Application {
     private static MyApplication myApp;
     private CampusInfoDatabase campusInfoDB;
 
-//    全局变量，当成session使用 or 考虑用sharedpreference存储
+//    全局变量，当成session使用 or 有些信息可以考虑用sharedpreference存储
     public HashMap<String, String> infoMap = new HashMap<>();
 
 //    返回MyApplication实例
@@ -33,7 +33,6 @@ public class MyApplication extends Application {
 
         campusInfoDB = Room.databaseBuilder(this, CampusInfoDatabase.class, "campus_info")
                 .addMigrations().allowMainThreadQueries().build();
-
 
     }
 

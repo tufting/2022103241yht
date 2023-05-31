@@ -70,9 +70,9 @@ public class HomeBaseAdapter extends BaseAdapter {
 
         String collect_text;
         if (collection.contains(post.getId())) {
-            collect_text = "收藏数：" + String.valueOf(post.getCollects_num()) + " (已收藏)";
+            collect_text = String.valueOf(post.getCollects_num()) + "人收藏 (已收藏)";
         } else {
-            collect_text = "收藏数：" + String.valueOf(post.getCollects_num()) + " (点击收藏)";
+            collect_text = String.valueOf(post.getCollects_num()) + "人收藏 (点击收藏)";
         }
         holder.tv_collects_num.setText(collect_text);
 
