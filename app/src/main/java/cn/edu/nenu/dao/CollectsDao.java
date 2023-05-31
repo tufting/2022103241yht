@@ -18,7 +18,7 @@ public interface CollectsDao {
     void deleteByPostId(int postId);
 
     @Query("DELETE FROM Collects WHERE userId = :userId and postId = :postId")
-    void removeCollect(int userId, int postId);
+    void deleteByDoubleId(int userId, int postId);
 
     @Query("SELECT count(*) FROM Collects WHERE userId = :userId and postId = :postId")
     int queryByDoubleId(int userId, int postId);

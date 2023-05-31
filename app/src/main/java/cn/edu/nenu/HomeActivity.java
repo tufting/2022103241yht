@@ -1,6 +1,7 @@
 package cn.edu.nenu;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.RoomDatabase;
 import androidx.room.Transaction;
 
 import android.content.Intent;
@@ -134,7 +135,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
             /* 待优化：这里需要添加事务管理 */
             collectsDao.insert(collects);
-            postDao.collectAddOne(postId);
+            postDao.collectModifyOne(postId, 1);
 
             /* 待优化：收藏成功后，应在显示页面将收藏数文本更新 */
 

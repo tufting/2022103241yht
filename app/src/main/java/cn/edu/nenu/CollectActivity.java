@@ -88,6 +88,12 @@ public class CollectActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        ToastUtil.show(this, "触发了点击事件" + postList.get(i).getTitle());
+        /* 取消收藏功能 */
+        collectsDao = myApp.getCampusInfoDB().collectsDao();
+        int postId = postList.get(i).getId();
+        collectsDao.deleteByDoubleId(curId, postId);
+        postDao.collectModifyOne(postId, -1);
+
+        ToastUtil.show(this, "已取消收藏" + postList.get(i).getTitle());
     }
 }
