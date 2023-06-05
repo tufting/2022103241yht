@@ -11,7 +11,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
+import cn.edu.nenu.dao.CollectsDao;
 import cn.edu.nenu.dao.PostDao;
+import cn.edu.nenu.entity.Collects;
 import cn.edu.nenu.entity.Post;
 import cn.edu.nenu.util.SessionUtil;
 import cn.edu.nenu.util.TimeUtil;
@@ -21,6 +25,7 @@ public class MyOneActivity extends AppCompatActivity implements View.OnClickList
 
     private MyApplication myApp;
     private PostDao postDao;
+    private CollectsDao collectsDao;
     private Post post;
 
     private EditText et_title;
@@ -118,9 +123,23 @@ public class MyOneActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent);
             }
         } else if (view.getId() == R.id.btn_deletePost) {
+            /* 待优化：添加事务 */
+
             /* 删除帖子 */
+            postDao.delete(post.getId());
+
             /* 删除收藏过该帖子的collect字段 */
+            collectsDao = myApp.getCampusInfoDB().collectsDao();
+            List<Collects> collectsList = collectsDao.queryByPostId(post.getId());
+            for (Collects c1: collectsList) {
+                collectsDao.delete(c1);
+            }
+
             /* 也要把用户收藏数减少，这里使用lazy标记的思想，当用户查看自己收藏的时候再去更新用户收藏夹。（由于user没有收藏字段，该行可忽略） */
+            ToastUtil.show(this, "删除成功");
+
+            intent = new Intent(this, MyPostActivity.class);
+            startActivity(intent);
         }
     }
 

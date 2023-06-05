@@ -14,6 +14,9 @@ public interface CollectsDao {
     @Insert
     void insert(Collects... collects);
 
+    @Delete
+    void delete(Collects... collects);
+
     @Query("DELETE FROM Collects WHERE postId = :postId")
     void deleteByPostId(int postId);
 
@@ -25,4 +28,7 @@ public interface CollectsDao {
 
     @Query("SELECT postId FROM Collects WHERE userId = :userId")
     List<Integer> queryByUserId(int userId);
+
+    @Query("SELECT * FROM Collects WHERE postId = :postId")
+    List<Collects> queryByPostId(int postId);
 }

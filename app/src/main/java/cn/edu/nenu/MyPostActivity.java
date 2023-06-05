@@ -57,8 +57,6 @@ public class MyPostActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//        ToastUtil.show(this, "您选择的帖子主题是：" + postList.get(i).getTitle());
-
         /* 获取某一条帖子的数据 */
         Post post = postList.get(i);
         SessionUtil sUtil = new SessionUtil();

@@ -94,6 +94,6 @@ public class CollectActivity extends AppCompatActivity implements View.OnClickLi
         collectsDao.deleteByDoubleId(curId, postId);
         postDao.collectModifyOne(postId, -1);
 
-        ToastUtil.show(this, "已取消收藏" + postList.get(i).getTitle());
+        ToastUtil.show(this, "已取消收藏:" + postList.get(i).getTitle());
     }
 }

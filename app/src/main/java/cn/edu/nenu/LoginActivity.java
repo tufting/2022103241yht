@@ -86,8 +86,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         public void afterTextChanged(Editable editable) {
             if (et_account.getText().length() == 0 || et_pwd.getText().length() == 0) {
                 btn_login.setEnabled(false);
+                btn_login.setBackground(getResources().getDrawable(R.drawable.shape_big_btn_unable));
             } else {
                 btn_login.setEnabled(true);
+                btn_login.setBackground(getResources().getDrawable(R.drawable.shape_big_login_btn));
             }
         }
     };
