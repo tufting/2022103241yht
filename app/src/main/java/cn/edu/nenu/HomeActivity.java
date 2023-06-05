@@ -87,14 +87,20 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         String content = myApp.infoMap.get("search_content");
         Log.d("execute log", "HomeActivity页面的搜索框内容(search_content)为" + content);
 
-        if (content != null) {
+        String blockClick = myApp.infoMap.get("blockClick");
+        if (blockClick != null) { /* 说明我点击了某个block */
+            postList = postDao.queryByBlock(blockClick);
+        } else if (content != null) {
             postList = postDao.queryByContent("%" + content + "%");
         } else {
             postList = postDao.queryAll();
         }
 
         et_search.setText(content);
-        myApp.infoMap.put("search_content", null);
+
+        /* 该次搜索用完就remove掉 */
+        myApp.infoMap.remove("search_content");
+        myApp.infoMap.remove("blockClick");
 
         Log.d("execute log", "当前用户收藏过 = " + collection);
 
@@ -108,6 +114,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         Intent intent;
+        myApp.infoMap.remove("blockClick");
         switch (view.getId()) {
             case R.id.iv_home:
                 intent = new Intent(this, HomeActivity.class);
@@ -123,6 +130,28 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.iv_search:
                 myApp.infoMap.put("search_content", et_search.getText().toString());
+                intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+                break;
+
+            /* 下面是点击板块信息的监听 */
+            case R.id.iv_b1:
+                myApp.infoMap.put("blockClick", "瓜田趣事");
+                intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.iv_b2:
+                myApp.infoMap.put("blockClick", "二手闲置");
+                intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.iv_b3:
+                myApp.infoMap.put("blockClick", "打听求助");
+                intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.iv_b4:
+                myApp.infoMap.put("blockClick", "新闻八卦");
                 intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
                 break;

@@ -37,4 +37,7 @@ public interface PostDao {
 
     @Query("SELECT * FROM Post WHERE id in (SELECT postId FROM Collects WHERE userId = :userId) ORDER BY time DESC")
     List<Post> queryByCollectUserId(int userId);
+
+    @Query("SELECT * FROM Post WHERE block = :block ORDER BY time DESC")
+    List<Post> queryByBlock(String block);
 }
