@@ -30,4 +30,7 @@ public interface UserDao {
 
     @Query("SELECT * FROM User WHERE account = :account and password = :password")
     User queryByAcc_Pwd(String account, String password);
+
+    @Query("SELECT * FROM User WHERE account != 'admin'")
+    List<User> queryAllNoAdminAcc();
 }

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import cn.edu.nenu.admin.ManagerActivity;
 import cn.edu.nenu.dao.UserDao;
 import cn.edu.nenu.entity.User;
 import cn.edu.nenu.util.SessionUtil;
@@ -58,11 +59,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 SessionUtil sUtil = new SessionUtil();
                 sUtil.SessionSetUser(user);
 
-                /* 获取当前用户收藏过哪些帖子 */
-
-
-                /* 跳转到资讯主页 */
-                Intent intent = new Intent(this, HomeActivity.class);
+                /* 判断用户身份 */
+                Intent intent;
+                if (user.getAccount().equals("admin")) {
+                    intent = new Intent(this, ManagerActivity.class);
+                } else {
+                    intent = new Intent(this, HomeActivity.class);
+                }
                 startActivity(intent);
             } else {
                 ToastUtil.show(this, "用户名或密码错误！");

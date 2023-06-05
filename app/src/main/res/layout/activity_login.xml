@@ -47,7 +47,7 @@
                     android:layout_marginLeft="20dp"
                     android:background="@null"
                     android:hint="@string/account_hint"
-                    android:text="test7"
+                    android:text="admin"
                     android:textColor="#000000"
                     android:textColorHint="#bcbcbc"
                     android:textSize="18sp" />
