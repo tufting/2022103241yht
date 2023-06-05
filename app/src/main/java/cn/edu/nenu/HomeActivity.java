@@ -53,6 +53,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.iv_collect).setOnClickListener(this);
         findViewById(R.id.iv_my).setOnClickListener(this);
 
+        /* 监听分类板块 */
+        findViewById(R.id.iv_b1).setOnClickListener(this);
+        findViewById(R.id.iv_b2).setOnClickListener(this);
+        findViewById(R.id.iv_b3).setOnClickListener(this);
+        findViewById(R.id.iv_b4).setOnClickListener(this);
+
         /* 监听搜索框，设置模糊查询 */
         et_search = findViewById(R.id.et_search);
         findViewById(R.id.iv_search).setOnClickListener(this);
@@ -80,6 +86,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         postDao = myApp.getCampusInfoDB().postDao();
         String content = myApp.infoMap.get("search_content");
         Log.d("execute log", "HomeActivity页面的搜索框内容(search_content)为" + content);
+
         if (content != null) {
             postList = postDao.queryByContent("%" + content + "%");
         } else {
