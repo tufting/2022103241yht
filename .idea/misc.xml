@@ -23,6 +23,7 @@
         <entry key="..\:/workspaces/android-spaces/2022103241yht/app/src/main/res/layout/activity_login.xml" value="0.16" />
         <entry key="..\:/workspaces/android-spaces/2022103241yht/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/workspaces/android-spaces/2022103241yht/app/src/main/res/layout/activity_manager.xml" value="0.25" />
+        <entry key="..\:/workspaces/android-spaces/2022103241yht/app/src/main/res/layout/activity_mpost.xml" value="0.20878623188405798" />
         <entry key="..\:/workspaces/android-spaces/2022103241yht/app/src/main/res/layout/activity_muser.xml" value="0.20878623188405798" />
         <entry key="..\:/workspaces/android-spaces/2022103241yht/app/src/main/res/layout/activity_my.xml" value="0.15" />
         <entry key="..\:/workspaces/android-spaces/2022103241yht/app/src/main/res/layout/activity_my_one.xml" value="0.21240942028985507" />
@@ -31,6 +32,8 @@
         <entry key="..\:/workspaces/android-spaces/2022103241yht/app/src/main/res/layout/activity_update_user.xml" value="0.25" />
         <entry key="..\:/workspaces/android-spaces/2022103241yht/app/src/main/res/layout/item_collect.xml" value="0.21240942028985507" />
         <entry key="..\:/workspaces/android-spaces/2022103241yht/app/src/main/res/layout/item_home.xml" value="0.33" />
+        <entry key="..\:/workspaces/android-spaces/2022103241yht/app/src/main/res/layout/item_mpost.xml" value="0.22826086956521738" />
+        <entry key="..\:/workspaces/android-spaces/2022103241yht/app/src/main/res/layout/item_muser.xml" value="0.20878623188405798" />
         <entry key="..\:/workspaces/android-spaces/2022103241yht/app/src/main/res/layout/item_my_post.xml" value="0.3614583333333333" />
       </map>
     </option>
