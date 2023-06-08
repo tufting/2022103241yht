@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".UpdateUserActivity">
+    tools:context=".admin.UPostActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#e6e6e6"
+        android:background="@drawable/shape_my_info_bg"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -30,21 +30,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="@string/myInfo_hint"
-                android:textColor="#515151"
+                android:text="@string/c_post"
+                android:textColor="@color/skin_text_white"
                 android:textSize="18sp" />
         </RelativeLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="705dp"
         android:background="#ffffff"
         android:orientation="vertical">
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="65dp"
             android:paddingLeft="30dp">
 
@@ -54,29 +54,22 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:text="账号 "
+                android:text="主题："
                 android:textColor="#404040"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/tv_account"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <EditText
+                android:id="@+id/et_title"
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_toRightOf="@+id/tv1"
-                android:text="account"
+                android:hint="@string/title_hint"
+                android:textColorHint="#bcbcbc"
+                android:background="@null"
                 android:textColor="#404040"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/tv_account"
-                android:text="(无法更改)"
-                android:textColor="#bfbfbf"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -89,30 +82,35 @@
             android:background="#EEEEEE" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_width="wrap_content"
+            android:layout_height="139dp"
+            android:layout_marginBottom="10dp"
             android:paddingLeft="30dp">
 
             <TextView
                 android:id="@+id/tv2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
+                android:paddingTop="20dp"
                 android:layout_marginLeft="10dp"
-                android:text="密码 "
+                android:text="内容："
                 android:textColor="#404040"
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_password"
+                android:id="@+id/et_content"
                 android:layout_width="fill_parent"
-                android:layout_height="35dp"
+                android:layout_height="fill_parent"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_toRightOf="@+id/tv2"
+                android:hint="@string/content_hint"
+                android:textColorHint="#bcbcbc"
                 android:background="@null"
-                android:text="password"
+                android:gravity="left|top"
+                android:inputType="textMultiLine"
+                android:paddingTop="20dp"
                 android:textColor="#404040"
                 android:textSize="16sp" />
 
@@ -126,33 +124,57 @@
             android:background="#EEEEEE" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
             android:paddingLeft="30dp">
 
             <TextView
                 android:id="@+id/tv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:text="昵称 "
+                android:layout_marginTop="10dp"
+                android:text="所属板块："
                 android:textColor="#404040"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/et_name"
-                android:layout_width="fill_parent"
-                android:layout_height="35dp"
-                android:layout_centerVertical="true"
+            <!--            单选框、非动态生成-->
+            <RadioGroup
+                android:id="@+id/rg_block"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_toRightOf="@+id/tv3"
-                android:background="@null"
-                android:text="nickname"
-                android:textColor="#404040"
-                android:textSize="16sp" />
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/tv3">
 
+                <RadioButton
+                    android:id="@+id/rb_block1"
+                    android:layout_height="35dp"
+                    android:layout_width="wrap_content"
+                    android:checked="true"
+                    android:text="@string/block1" />
+
+                <RadioButton
+                    android:id="@+id/rb_block2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="@string/block2" />
+
+                <RadioButton
+                    android:id="@+id/rb_block3"
+                    android:layout_height="35dp"
+                    android:layout_width="wrap_content"
+                    android:text="@string/block3" />
+
+                <RadioButton
+                    android:id="@+id/rb_block4"
+                    android:layout_height="35dp"
+                    android:layout_width="wrap_content"
+                    android:text="@string/block4" />
+
+            </RadioGroup>
         </RelativeLayout>
 
         <View
@@ -163,7 +185,7 @@
             android:background="#EEEEEE" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="65dp"
             android:paddingLeft="30dp">
 
@@ -173,29 +195,21 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:text="注册日期 "
-                android:textColor="#404040"
+                android:text="上次修改："
+                android:textColor="#5E5E5E"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/tv_regTime"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_time"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_toRightOf="@+id/tv4"
-                android:text="@string/regTime_hint"
-                android:textColor="#404040"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/tv_regTime"
-                android:text="(无法更改)"
-                android:textColor="#bfbfbf"
+                android:background="@null"
+                android:textColor="#5E5E5E"
+                tools:text="2023-05-27 12:24:33"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -207,52 +221,33 @@
             android:layout_marginRight="15dp"
             android:background="#EEEEEE" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="165dp"
-            android:paddingLeft="30dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:layout_marginLeft="60dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_update"
+                android:layout_width="120dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/shape_generic_btn"
+                android:text="@string/m_verify"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="120dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/shape_generic2_btn"
+                android:text="@string/m_delete"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="20dp"
-                android:layout_marginLeft="10dp"
-                android:text="个人简介 "
-                android:textColor="#404040"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/et_signature"
-                android:layout_width="309dp"
-                android:layout_height="139dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_toRightOf="@+id/tv5"
-                android:background="@null"
-                android:gravity="left|top"
-                android:inputType="textMultiLine"
-                android:paddingTop="20dp"
-                android:hint="@string/signature_hint"
-                android:text="signature"
-                android:textColor="#404040"
-                android:textSize="16sp" />
-
-        </RelativeLayout>
-
-        <Button
-            android:id="@+id/btn_update"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginLeft="18dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="18dp"
-            android:background="@drawable/shape_generic_btn"
-            android:text="@string/confirm_update"
-            android:enabled="true"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
 
     </LinearLayout>
-
 </LinearLayout>

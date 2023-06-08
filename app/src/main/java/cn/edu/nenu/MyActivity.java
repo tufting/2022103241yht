@@ -31,10 +31,6 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
         tv_signature.setText(myApp.infoMap.get("cur_signature"));
 
 
-        /**/
-        /**/
-
-
         /* 页面中功能的监听 */
         /* 这里可以改成直接监听功能对应的相对布局框 */
         findViewById(R.id.tv_update).setOnClickListener(this);

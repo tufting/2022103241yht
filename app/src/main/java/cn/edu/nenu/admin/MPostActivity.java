@@ -21,6 +21,7 @@ import cn.edu.nenu.dao.PostDao;
 import cn.edu.nenu.dao.UserDao;
 import cn.edu.nenu.entity.Post;
 import cn.edu.nenu.entity.User;
+import cn.edu.nenu.util.SessionUtil;
 import cn.edu.nenu.util.ToastUtil;
 
 public class MPostActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
@@ -36,6 +37,7 @@ public class MPostActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_mpost);
         Log.d("execute log", "执行了MUserActivity类的onCreate()方法...");
 
+        /* 待优化：可以增加一个点击作者名、发帖日期的排序功能。 */
         myApp = MyApplication.getInstance();
         postDao = myApp.getCampusInfoDB().postDao();
         postList = postDao.queryAll();
@@ -59,10 +61,8 @@ public class MPostActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        Intent intent;
-
         if (view.getId() == R.id.iv_back) {
-            intent = new Intent(this, ManagerActivity.class);
+            Intent intent = new Intent(this, ManagerActivity.class);
             startActivity(intent);
         }
     }
@@ -70,5 +70,12 @@ public class MPostActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         ToastUtil.show(this, "点击了" + postList.get(i).getTitle());
+
+        /* 保存相应Post信息，并跳转到相应界面，显示信息 */
+        SessionUtil sUtil = new SessionUtil();
+        sUtil.SessionSetPost(postList.get(i));
+
+        Intent intent = new Intent(this, UPostActivity.class);
+        startActivity(intent);
     }
 }

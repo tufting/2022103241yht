@@ -11,6 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.2022103241yht">
         <activity
+            android:name=".admin.UPostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.UUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.MPostActivity"
             android:exported="false" />
         <activity

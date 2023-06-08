@@ -14,9 +14,15 @@
     <string name="myOne_hint">当前帖子</string>
     <string name="myCollect">我的收藏</string>
 
+    <!-- admin server title -->
     <string name="m_manage">校园资讯管理端界面</string>
     <string name="m_user">管理用户信息</string>
     <string name="m_post">管理帖子信息</string>
+    <string name="c_user">当前用户信息</string>
+    <string name="c_post">当前帖子信息</string>
+
+    <string name="m_verify">修改</string>
+    <string name="m_delete">删除</string>
 
     <!--    myOne_hint-->
     <string name="delete_post">删除帖子</string>
@@ -31,6 +37,7 @@
     <string name="content_hint">请输入帖子内容</string>
     <string name="confirm_add">确认发布</string>
 
+    <!-- block -->
     <string name="block1">瓜田趣事</string>
     <string name="block2">二手闲置</string>
     <string name="block3">打听求助</string>
