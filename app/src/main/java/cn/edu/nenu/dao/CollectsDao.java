@@ -29,6 +29,9 @@ public interface CollectsDao {
     @Query("SELECT count(*) FROM Collects WHERE userId = :userId and postId = :postId")
     int queryByDoubleId(int userId, int postId);
 
+    @Query("SELECT * FROM Collects")
+    List<Collects> queryAll();
+
     @Query("SELECT postId FROM Collects WHERE userId = :userId")
     List<Integer> queryByUserId(int userId);
 

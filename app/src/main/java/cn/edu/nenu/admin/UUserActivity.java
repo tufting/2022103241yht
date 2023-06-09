@@ -66,6 +66,8 @@ public class UUserActivity extends AppCompatActivity implements View.OnClickList
         et_signature.setText(user.getSignature());
 
         userDao = myApp.getCampusInfoDB().userDao();
+        postDao = myApp.getCampusInfoDB().postDao();
+        collectsDao = myApp.getCampusInfoDB().collectsDao();
         
         findViewById(R.id.iv_back).setOnClickListener(this);
         findViewById(R.id.btn_update).setOnClickListener(this);
@@ -89,7 +91,8 @@ public class UUserActivity extends AppCompatActivity implements View.OnClickList
             if (flag != 0) {
                 ToastUtil.show(this, "修改成功");
 
-                SessionUtil sUtil = new SessionUtil(); // 保存当前用户信息
+                /* 保存当前用户信息 */
+                SessionUtil sUtil = new SessionUtil();
                 sUtil.SessionSetUser(user);
             } else {
                 ToastUtil.show(this, "修改失败");
@@ -101,20 +104,18 @@ public class UUserActivity extends AppCompatActivity implements View.OnClickList
             userDao.delete(user.getId());
 
             /* 删除用户发表过的帖子数据 */
-            postDao = myApp.getCampusInfoDB().postDao();
             List<Post> postList = postDao.queryByAuthor(String.valueOf(user.getId()));
             postDao.deleteByAuthor(String.valueOf(user.getId()));
 
             /* 删除用户收藏过的帖子数据 */
-            collectsDao = myApp.getCampusInfoDB().collectsDao();
             collectsDao.deleteByUserId(user.getId());
             for (Post post: postList) {
                 collectsDao.deleteByPostId(post.getId());
             }
 
-            intent = new Intent(this, ManagerActivity.class);
+            intent = new Intent(this, MUserActivity.class);
         } else if (view.getId() == R.id.iv_back) {
-            intent = new Intent(this, ManagerActivity.class);
+            intent = new Intent(this, MUserActivity.class);
         }
         startActivity(intent);
     }

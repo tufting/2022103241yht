@@ -21,8 +21,8 @@
     <string name="c_user">当前用户信息</string>
     <string name="c_post">当前帖子信息</string>
 
-    <string name="m_verify">修改</string>
-    <string name="m_delete">删除</string>
+    <string name="m_verify">修 改</string>
+    <string name="m_delete">删 除</string>
 
     <!--    myOne_hint-->
     <string name="delete_post">删除帖子</string>

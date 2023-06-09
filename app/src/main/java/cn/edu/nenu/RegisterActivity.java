@@ -82,6 +82,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             String acc = et_account.getText().toString();
             int flag = 1;
             for (User u: uList) {
+                if (et_pwd.getText().length() == 0) {
+                    break;
+                }
                 if (acc.equals(u.getAccount())) {
                     flag = 0;
                     et_acc_hint.setText("用户名已存在");

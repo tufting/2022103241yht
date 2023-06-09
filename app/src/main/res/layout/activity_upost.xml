@@ -66,10 +66,10 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_toRightOf="@+id/tv1"
-                android:hint="@string/title_hint"
-                android:textColorHint="#bcbcbc"
                 android:background="@null"
+                android:hint="@string/title_hint"
                 android:textColor="#404040"
+                android:textColorHint="#bcbcbc"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -105,13 +105,13 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_toRightOf="@+id/tv2"
-                android:hint="@string/content_hint"
-                android:textColorHint="#bcbcbc"
                 android:background="@null"
                 android:gravity="left|top"
+                android:hint="@string/content_hint"
                 android:inputType="textMultiLine"
                 android:paddingTop="20dp"
                 android:textColor="#404040"
+                android:textColorHint="#bcbcbc"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -209,8 +209,8 @@
                 android:layout_toRightOf="@+id/tv4"
                 android:background="@null"
                 android:textColor="#5E5E5E"
-                tools:text="2023-05-27 12:24:33"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:text="2023-05-27 12:24:33" />
 
         </RelativeLayout>
 

@@ -4,6 +4,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import cn.edu.nenu.dao.CollectsDao;
+import cn.edu.nenu.dao.PostDao;
+import cn.edu.nenu.entity.Post;
+
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
