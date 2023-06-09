@@ -19,6 +19,9 @@ public interface PostDao {
     @Query("DELETE FROM Post WHERE id = :id")
     void delete(int id);
 
+    @Query("DELETE FROM Post WHERE author = :author")
+    void deleteByAuthor(String author);    /* author is user primary key */
+
     @Update
     int update(Post post);
 

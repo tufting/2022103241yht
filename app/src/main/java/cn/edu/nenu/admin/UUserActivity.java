@@ -9,11 +9,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import cn.edu.nenu.MyActivity;
+import java.util.List;
+
 import cn.edu.nenu.MyApplication;
 import cn.edu.nenu.R;
-import cn.edu.nenu.UpdateUserActivity;
+import cn.edu.nenu.dao.CollectsDao;
+import cn.edu.nenu.dao.PostDao;
 import cn.edu.nenu.dao.UserDao;
+import cn.edu.nenu.entity.Post;
 import cn.edu.nenu.entity.User;
 import cn.edu.nenu.util.SessionUtil;
 import cn.edu.nenu.util.ToastUtil;
@@ -22,6 +25,8 @@ public class UUserActivity extends AppCompatActivity implements View.OnClickList
     private MyApplication myApp;
     private User user;
     private UserDao userDao;
+    private PostDao postDao;
+    private CollectsDao collectsDao;
 
     private EditText et_account;
     private EditText et_password;
@@ -96,11 +101,17 @@ public class UUserActivity extends AppCompatActivity implements View.OnClickList
             userDao.delete(user.getId());
 
             /* 删除用户发表过的帖子数据 */
-
+            postDao = myApp.getCampusInfoDB().postDao();
+            List<Post> postList = postDao.queryByAuthor(String.valueOf(user.getId()));
+            postDao.deleteByAuthor(String.valueOf(user.getId()));
 
             /* 删除用户收藏过的帖子数据 */
+            collectsDao = myApp.getCampusInfoDB().collectsDao();
+            collectsDao.deleteByUserId(user.getId());
+            for (Post post: postList) {
+                collectsDao.deleteByPostId(post.getId());
+            }
 
-            
             intent = new Intent(this, ManagerActivity.class);
         } else if (view.getId() == R.id.iv_back) {
             intent = new Intent(this, ManagerActivity.class);

@@ -17,6 +17,9 @@ public interface CollectsDao {
     @Delete
     void delete(Collects... collects);
 
+    @Query("DELETE FROM Collects WHERE userId = :userid")
+    void deleteByUserId(int userid);
+
     @Query("DELETE FROM Collects WHERE postId = :postId")
     void deleteByPostId(int postId);
 
