@@ -14,11 +14,14 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import cn.edu.nenu.dao.CollectsDao;
+import cn.edu.nenu.dao.CommentDao;
 import cn.edu.nenu.dao.PostDao;
 import cn.edu.nenu.dao.UserDao;
 import cn.edu.nenu.entity.Collects;
+import cn.edu.nenu.entity.Comment;
 import cn.edu.nenu.entity.Post;
 import cn.edu.nenu.entity.User;
+import cn.edu.nenu.util.TimeUtil;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -31,9 +34,11 @@ public class ExampleInstrumentedTest {
     private User user;
     private Post post;
     private Collects collects;
+    private Comment comment;
     private UserDao userDao;
     private PostDao postDao;
     private CollectsDao collectsDao;
+    private CommentDao commentDao;
 
     @Test
     public void useAppContext() {
@@ -48,6 +53,54 @@ public class ExampleInstrumentedTest {
         userDao = myApp.getCampusInfoDB().userDao();
         postDao = myApp.getCampusInfoDB().postDao();
         collectsDao = myApp.getCampusInfoDB().collectsDao();
+    }
+
+    @Test
+    public void addPost() {
+        instance();
+
+        int random = 1;
+        for (int i = 1; i <= 5; i++) {
+            post = new Post();
+            post.setTitle("title");
+            post.setContent("content");
+            post.setTime(TimeUtil.getCurrentSystemTime());
+
+            random = (int)(Math.random() * 20) + 1;
+            post.setAuthor(String.valueOf(random));
+            post.setCollects_num(0);
+
+            random = (int)(Math.random() * 10);
+            random = random % 4;
+            String block;
+            if (random == 0) {
+                block = "瓜田趣事";
+            } else if (random == 1) {
+                block = "二手闲置";
+            } else if (random == 2) {
+                block = "打听求助";
+            } else {
+                block = "新闻八卦";
+            }
+            post.setBlock(block);
+
+            postDao.insert(post);
+        }
+    }
+
+    @Test
+    public void registerUser() {
+        instance();
+
+        for (int i = 5; i <= 20; i++) {
+            user = new User();
+            user.setAccount("test" + i);
+            user.setPassword("123");
+            user.setName("NENU test" + i);
+            user.setRegTime(TimeUtil.getCurrentSystemTime());
+            user.setSignature("该用户太懒了，什么都没留下！");
+            userDao.insert(user);
+        }
     }
 
     @Test

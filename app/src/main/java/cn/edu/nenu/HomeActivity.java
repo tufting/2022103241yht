@@ -27,6 +27,7 @@ import cn.edu.nenu.dao.UserDao;
 import cn.edu.nenu.entity.Collects;
 import cn.edu.nenu.entity.Post;
 import cn.edu.nenu.entity.User;
+import cn.edu.nenu.util.SessionUtil;
 import cn.edu.nenu.util.ToastUtil;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
@@ -160,24 +161,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        int postId = postList.get(i).getId();
+        SessionUtil sUtil = new SessionUtil();
+        sUtil.SessionSetPost(postList.get(i));
 
-        /* 这里写收藏功能，先看是否已经收藏了 */
-        int findExist = collectsDao.queryByDoubleId(curId, postId);
-        if (findExist == 0) {
-            Collects collects = new Collects();
-            collects.setUserId(curId);
-            collects.setPostId(postId);
-
-            /* 待优化：这里需要添加事务管理 */
-            collectsDao.insert(collects);
-            postDao.collectModifyOne(postId, 1);
-
-            /* 待优化：收藏成功后，应在显示页面将收藏数文本更新 */
-
-            ToastUtil.show(this, "收藏成功");
-        } else {
-            ToastUtil.show(this, "您已经收藏了");
-        }
+        Intent intent = new Intent(this, ShowOnePostActivity.class);
+        startActivity(intent);
     }
 }

@@ -64,7 +64,7 @@ public class HomeBaseAdapter extends BaseAdapter {
 //        给holder设置数据
         Post post = postList.get(i);
         holder.tv_author.setText(userMap.get(Integer.parseInt(post.getAuthor())));
-        holder.tv_content.setText(post.getTitle() + " ||| " + post.getContent());
+        holder.tv_content.setText(post.getTitle() + "。" + post.getContent());
         holder.tv_block.setText("#" + post.getBlock() + "#");
         holder.tv_time.setText(post.getTime());
 

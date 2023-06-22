@@ -33,4 +33,7 @@ public interface UserDao {
 
     @Query("SELECT * FROM User WHERE account != 'admin'")
     List<User> queryAllNoAdminAcc();
+
+    @Query("SELECT name FROM User WHERE id = :id")
+    String queryById(int id);
 }

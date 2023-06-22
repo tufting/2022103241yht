@@ -32,7 +32,7 @@ public class MyApplication extends Application {
         Log.d("execute log", "执行了MyApplication类的onCreate()方法...");
 
         campusInfoDB = Room.databaseBuilder(this, CampusInfoDatabase.class, "campus_info")
-                .addMigrations().allowMainThreadQueries().build();
+                .addMigrations().fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
     }
 

@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.2022103241yht">
         <activity
+            android:name=".ShowOnePostActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.UPostActivity"
             android:exported="false" />
         <activity
