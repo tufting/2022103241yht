@@ -35,6 +35,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private MyApplication myApp;
     private PostDao postDao;
     private UserDao userDao;
+
     private CollectsDao collectsDao;
 
     private List<Post> postList;
